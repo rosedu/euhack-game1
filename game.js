@@ -21,19 +21,19 @@ function inputs() {
 
 function physics() {
     y += 3;
-    var ball = {x: x - 10, y: y - 10, h: 20, w: 20};
+    var ball = {x: x, y: y, h: 20, w: 20};
     world.forEach(function(obj) {
         if(ball.y + ball.h > obj.y) {
             ball.y = obj.y - ball.h;
         }
     });
-    y = ball.y + 10;
+    y = ball.y;
 }
 
 function draw() {
     var circle = document.querySelector('#ball');
-    circle.setAttribute('cx', x);
-    circle.setAttribute('cy', y);
+    circle.setAttribute('cx', x + 10);
+    circle.setAttribute('cy', y + 10);
 }
 
 function gameLoop() {
