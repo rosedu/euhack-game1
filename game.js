@@ -54,8 +54,9 @@ function gameLoop() {
 var world;
 window.addEventListener('load', function() {
     world = [];
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
-        var obj = {id: 'block'+n, x: n*32, y: 128, w: 32, h :32};
+
+    function createGroundBlock(id, x, y) {
+        var obj = {id: id, x: x, y: y, w: 32, h :32};
         world.push(obj);
         node = document.createElementNS('http://www.w3.org/2000/svg', 'image');
         node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'ground.png');
@@ -65,6 +66,10 @@ window.addEventListener('load', function() {
         node.setAttribute('width', obj.w);
         node.setAttribute('height', obj.h);
         document.querySelector('#game').appendChild(node);
+    }
+
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
+        createGroundBlock('block'+n, n * 32, 128);
     });
 
     window.addEventListener('keydown', function(e) {
