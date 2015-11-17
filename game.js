@@ -71,6 +71,7 @@ window.addEventListener('load', function() {
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
         createGroundBlock('block'+n, n * 32, 128);
     });
+    createGroundBlock('block10', 128, 96);
 
     window.addEventListener('keydown', function(e) {
         keyboard[String.fromCharCode(e.keyCode)] = true;
