@@ -27,7 +27,17 @@ function collides(a, b) {
     return true;
 }
 
-function physics() {
+function physicsX() {
+    var ball = {x: x, y: y, h: 20, w: 20};
+    world.forEach(function(obj) {
+        if(collides(ball, obj)) {
+            ball.x = obj.x - ball.w;
+        }
+    });
+    x = ball.x;
+}
+
+function physicsY() {
     y += 3;
     var ball = {x: x, y: y, h: 20, w: 20};
     world.forEach(function(obj) {
@@ -46,7 +56,8 @@ function draw() {
 
 function gameLoop() {
     inputs();
-    physics();
+    physicsX();
+    physicsY();
     draw();
     requestAnimationFrame(gameLoop);
 }
