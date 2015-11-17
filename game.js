@@ -105,7 +105,7 @@ window.addEventListener('load', function() {
     createBlock('ground.png', 'block20', 608, 192);
     createBlock('ground.png', 'block21', 608-32, 192);
     createBlock('sprite/Tile_Brown.png', 'block21', 608-32*2, 192, function(){
-        document.body.innerHTML = '<img src="win.png" />';
+        document.body.innerHTML = '<img src="win.png" style="max-width:100%; max-height:100%" />';
 
     });
 
