@@ -1,6 +1,6 @@
 var keyboard = {};
 var x = 32;
-var y = 64;
+var y = 108;
 
 function moveLeft() {
     x = x - 2;
@@ -8,6 +8,10 @@ function moveLeft() {
 
 function moveRight() {
     x = x + 2;
+}
+
+function gravity() {
+    y += 2;
 }
 
 function inputs() {
@@ -38,7 +42,7 @@ function physicsX() {
 }
 
 function physicsY() {
-    y += 3;
+    gravity();
     var ball = {x: x, y: y, h: 20, w: 20};
     world.forEach(function(obj) {
         if(collides(ball, obj)) {
@@ -55,7 +59,12 @@ function draw() {
 }
 
 function gameLoop() {
+    if(x > 640) {
+        x = 32;
+        y = 108;
+    }
     inputs();
+    moveRight();
     physicsX();
     physicsY();
     draw();
@@ -79,10 +88,14 @@ window.addEventListener('load', function() {
         document.querySelector('#game').appendChild(node);
     }
 
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
-        createGroundBlock('block'+n, n * 32, 128);
+    [0, 1, 2, 3, 4, 5, 6].forEach(function(n) {
+        createGroundBlock('block0'+n, n * 32, 128);
     });
-    createGroundBlock('block10', 128, 96);
+
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
+        createGroundBlock('block1'+n, 320 + n * 32, 224);
+    });
+    createGroundBlock('block20', 608, 192);
 
     window.addEventListener('keydown', function(e) {
         keyboard[String.fromCharCode(e.keyCode)] = true;
