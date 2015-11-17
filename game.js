@@ -19,11 +19,19 @@ function inputs() {
     }
 }
 
+function collides(a, b) {
+    if(a.x >= b.x + b.w) return false;
+    if(b.x >= a.x + a.w) return false;
+    if(a.y >= b.y + b.h) return false;
+    if(b.y >= a.y + a.h) return false;
+    return true;
+}
+
 function physics() {
     y += 3;
     var ball = {x: x, y: y, h: 20, w: 20};
     world.forEach(function(obj) {
-        if(ball.y + ball.h > obj.y) {
+        if(collides(ball, obj)) {
             ball.y = obj.y - ball.h;
         }
     });
