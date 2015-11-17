@@ -1,6 +1,6 @@
 var keyboard = {};
-var x = 20;
-var y = 20;
+var x = 32;
+var y = 64;
 
 function moveLeft() {
     x = x - 2;
@@ -47,7 +47,7 @@ var world;
 window.addEventListener('load', function() {
     world = [];
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
-        var obj = {id: 'block'+n, x: n*32, y: 48, w: 32, h :32};
+        var obj = {id: 'block'+n, x: n*32, y: 128, w: 32, h :32};
         world.push(obj);
         node = document.createElementNS('http://www.w3.org/2000/svg', 'image');
         node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'ground.png');
