@@ -29,7 +29,22 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+var world;
 window.addEventListener('load', function() {
+    world = [];
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
+        var obj = {id: 'block'+n, x: n*32, y: 48};
+        world.push(obj);
+        node = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+        node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'ground.png');
+        node.setAttribute('id', obj.id);
+        node.setAttribute('x', obj.x);
+        node.setAttribute('y', obj.y);
+        node.setAttribute('width', 32);
+        node.setAttribute('height', 32);
+        document.querySelector('#game').appendChild(node);
+    });
+
     window.addEventListener('keydown', function(e) {
         keyboard[String.fromCharCode(e.keyCode)] = true;
     });
