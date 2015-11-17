@@ -36,6 +36,9 @@ function physicsX() {
     world.forEach(function(obj) {
         if(collides(ball, obj)) {
             ball.x = obj.x - ball.w;
+            if (obj.finish !== undefined) {
+                obj.finish();
+            }
         }
     });
     x = ball.x;
@@ -47,6 +50,9 @@ function physicsY() {
     world.forEach(function(obj) {
         if(collides(ball, obj)) {
             ball.y = obj.y - ball.h;
+            if (obj.finish !== undefined) {
+                obj.finish();
+            }
         }
     });
     y = ball.y;
@@ -74,12 +80,13 @@ function gameLoop() {
 var world;
 window.addEventListener('load', function() {
     world = [];
+    var HEIGHT = 32, WIDTH = 32;
 
-    function createGroundBlock(id, x, y) {
-        var obj = {id: id, x: x, y: y, w: 32, h :32};
+    function createBlock(image, id, x, y, finish) {
+        var obj = {id: id, x: x, y: y, w: 32, h :32, finish:finish};
         world.push(obj);
         node = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-        node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'ground.png');
+        node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', image);
         node.setAttribute('id', obj.id);
         node.setAttribute('x', obj.x);
         node.setAttribute('y', obj.y);
@@ -89,13 +96,18 @@ window.addEventListener('load', function() {
     }
 
     [0, 1, 2, 3, 4, 5, 6].forEach(function(n) {
-        createGroundBlock('block0'+n, n * 32, 128);
+        createBlock('ground.png', 'block0'+n, n * 32, 128);
     });
 
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
-        createGroundBlock('block1'+n, 320 + n * 32, 224);
+        createBlock('ground.png', 'block1'+n, 320 + n * 32, 224);
     });
-    createGroundBlock('block20', 608, 192);
+    createBlock('ground.png', 'block20', 608, 192);
+    createBlock('ground.png', 'block21', 608-32, 192);
+    createBlock('sprite/Tile_Brown.png', 'block21', 608-32*2, 192, function(){
+        document.body.innerHTML = '<img src="win.png" />';
+
+    });
 
     window.addEventListener('keydown', function(e) {
         keyboard[String.fromCharCode(e.keyCode)] = true;
