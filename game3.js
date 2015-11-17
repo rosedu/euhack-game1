@@ -1,6 +1,7 @@
 var keyboard = {};
-var x = 32;
-var y = 128+32*3;
+
+var x = 32+32*10;
+var y = 128+32*6;
 
 function moveLeft() {
     x = x - 2;
@@ -11,7 +12,7 @@ function moveRight() {
 }
 
 function gravity() {
-    y += 2;
+    y += 0;
 }
 
 function jump() {
@@ -29,6 +30,17 @@ function inputs() {
         jump();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 function collides(a, b) {
     if(a.x >= b.x + b.w) return false;
@@ -77,7 +89,6 @@ function gameLoop() {
         y = 108;
     }
     inputs();
-    //moveRight();
     physicsX();
     physicsY();
     draw();
@@ -102,18 +113,15 @@ window.addEventListener('load', function() {
         document.querySelector('#game').appendChild(node);
     }
 
-    [0, 1, 2, 3, 4, 5, 6].forEach(function(n) {
-        createBlock('ground.png', 'block0'+n, n * 32, 128+32*6);
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].forEach(function(n) {
+        createBlock('ground.png', 'block0'+n, n * 32, 128+32*10);
     });
 
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(n) {
-        createBlock('ground.png', 'block1'+n, 320 + n * 32, 224);
-    });
-    createBlock('ground.png', 'block20', 608, 192);
-    createBlock('ground.png', 'block21', 608-32, 192);
-    createBlock('sprite/Tile_Brown.png', 'block21', 608-32*2, 192, function(){
+    createBlock('sprite/Tile_Brown.png', 'block21', 32*5, 32, function(){
         document.body.innerHTML = '<img src="win.png" style="max-width:100%; max-height:100%" />';
-
+    });
+    createBlock('sprite/Tile_Brown.png', 'block22', 32*6, 32, function(){
+        document.body.innerHTML = '<img src="win.png" style="max-width:100%; max-height:100%" />';
     });
 
     window.addEventListener('keydown', function(e) {
