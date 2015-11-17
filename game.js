@@ -3,11 +3,11 @@ var x = 20;
 var y = 20;
 
 function moveLeft() {
-    x = x - 3;
+    x = x - 2;
 }
 
 function moveRight() {
-    x = x + 3;
+    x = x + 2;
 }
 
 function inputs() {
@@ -20,7 +20,7 @@ function inputs() {
 }
 
 function physics() {
-    y += .1;
+    y += 3;
     var ball = {x: x - 10, y: y - 10, h: 20, w: 20};
     world.forEach(function(obj) {
         if(ball.y + ball.h > obj.y) {
