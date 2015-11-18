@@ -11,11 +11,11 @@ var x, y;
 
 
 function moveRight() {
-    x = x + 2;
+    x = x + 3;
 }
 
 function gravity() {
-    y = y + 10;
+    y = y + 2;
 }
 
 

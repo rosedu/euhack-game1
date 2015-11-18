@@ -40,6 +40,15 @@ function gravity() {
 
 
 
+
+
+
+
+
+
+
+
+
 var keyboard = {};
 function inputs() {
     if(keyboard.A) {
@@ -99,7 +108,7 @@ function draw() {
 function gameLoop() {
     if(x > 640 || x < 0) {
         x = 64*3;
-        y = 128+32*3;
+        y = 128+32;
     }
     inputs();
     moveRight();
@@ -114,7 +123,7 @@ window.addEventListener('load', function() {
     world = [];
     var HEIGHT = 32, WIDTH = 32;
     x = 64*3
-    y = 128+32*3
+    y = 128+32
 
     function createBlock(image, id, x, y, finish) {
         var obj = {id: id, x: x, y: y, w: 32, h :32, finish:finish};

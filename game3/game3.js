@@ -16,8 +16,8 @@ function gravity() {
 
 function jump() {
    // Press W
+   y = y - 10;
 }
-
 
 
 
@@ -107,7 +107,7 @@ function draw() {
 }
 
 function gameLoop() {
-    if(x > 640) {
+    if(x > 640 || y < 0) {
         x = 32+32*9;
         y = 128+32*6;
     }
