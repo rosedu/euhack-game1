@@ -16,7 +16,6 @@ function gravity() {
 
 function jump() {
    // Press W
-   y = y - 10;
 }
 
 
@@ -139,14 +138,14 @@ window.addEventListener('load', function() {
     }
 
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].forEach(function(n) {
-        createBlock('ground.png', 'block0'+n, n * 32, 128+32*10);
+        createBlock('http://palcu.ro/game3/ground.png', 'block0'+n, n * 32, 128+32*10);
     });
 
-    createBlock('tile.png', 'block21', 32*5, 32, function(){
-        document.body.innerHTML = '<img src="win.gif" style="width:100%;" />';
+    createBlock('http://palcu.ro/game3/tile.png', 'block21', 32*5, 32, function(){
+        document.body.innerHTML = '<img src="http://palcu.ro/game3/win.gif" style="width:100%;" />';
     });
-    createBlock('tile.png', 'block22', 32*6, 32, function(){
-        document.body.innerHTML = '<img src="win.gif" style="width:100%;" />';
+    createBlock('http://palcu.ro/game3/tile.png', 'block22', 32*6, 32, function(){
+        document.body.innerHTML = '<img src="http://palcu.ro/game3/win.gif" style="width:100%;" />';
     });
 
     window.addEventListener('keydown', function(e) {
